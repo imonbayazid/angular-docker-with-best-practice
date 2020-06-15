@@ -9,8 +9,6 @@ ng new angular-docker-demo
 cd angular-docker-demo
 
 3. Create a docker file with the following content 
-
-
 FROM node:slim as build_stage
 RUN mkdir /home/app && chown node:node /home/app
 WORKDIR /home/app
@@ -25,11 +23,7 @@ FROM nginx:1.17.1-alpine
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build_stage /home/app/dist/angular-docker-demo /usr/share/nginx/html
 
-
-
 4. create a nginx.conf file with 
-
-
 events{}
 
 http {
@@ -52,20 +46,17 @@ http {
 dist
 node_modules
 
-
 6. We can simply build by  
 docker build -t your_image_name .
 or we can tag the image while building as it is necessary to tag the image when u want to push it in the dockerhub
 so we will use 
 docker build -t your_dockerhub_username/your_image_name :version_name .
 
-
 7. check docker images in the docker 
 docker images
 
 8. Run the docker image
 docker run --name your_container_name-p 80:80 -d your_dockerhub_username/your_image_name :version_name
-
 
 9. check the running container and it's port 
 docker ps -a
