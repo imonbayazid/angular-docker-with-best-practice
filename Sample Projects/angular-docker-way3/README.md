@@ -1,4 +1,4 @@
-# AngularDockerDemo
+## Instruction
 
 1. Install node,angular cli in your local PC
 
