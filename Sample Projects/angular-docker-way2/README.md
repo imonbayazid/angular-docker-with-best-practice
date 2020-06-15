@@ -11,6 +11,7 @@ cd angular-docker-demo
 
 3. Create a docker file with the following content 
 
+```
       FROM node:slim as build_stage
       RUN mkdir /home/app && chown node:node /home/app
       WORKDIR /home/app
@@ -24,8 +25,7 @@ cd angular-docker-demo
       FROM nginx:1.17.1-alpine
       COPY nginx.conf /etc/nginx/nginx.conf
       COPY --from=build_stage /home/app/dist/angular-docker-demo /usr/share/nginx/html
-    
-
+```
 
 4. create a nginx.conf file with 
 events{}
