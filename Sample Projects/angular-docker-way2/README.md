@@ -11,10 +11,6 @@ cd angular-docker-demo
 
 3. Create a docker file with the following content 
 
-
-
-    include /etc/nginx/mime.types;
-
       FROM node:slim as build_stage
       RUN mkdir /home/app && chown node:node /home/app
       WORKDIR /home/app
