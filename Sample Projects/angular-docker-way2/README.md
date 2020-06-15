@@ -20,7 +20,7 @@ cd angular-docker-demo
       ENV PATH /home/app/node_modules/.bin:$PATH
       COPY --chown=node:node . .
       RUN npm run build
-
+      
       FROM nginx:1.17.1-alpine
       COPY nginx.conf /etc/nginx/nginx.conf
       COPY --from=build_stage /home/app/dist/angular-docker-demo /usr/share/nginx/html
